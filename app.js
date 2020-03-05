@@ -8,6 +8,8 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+var mongoose = require('mongoose');
+
 
 var config = {};
 config.mongodb = 'mongodb://localhost/mean-cms';
@@ -49,3 +51,5 @@ app.use(function(err, req, res, next) {
 
 module.exports = app;
 
+//Connect to MongoDB
+mongoose.connect(config.mongodb, { useNewUrlParser: true });
