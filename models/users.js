@@ -2,7 +2,6 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var uniqueValidator = require('mongoose-unique-validator');
 
-//Create a schema
 var Users = new Schema({
   email: {
     type: String,
@@ -22,7 +21,6 @@ var Users = new Schema({
   }
 });
 
-//Add unique validation properties to the model
 Users.plugin(uniqueValidator);
 
 module.exports  = mongoose.model('Users', Users);
