@@ -4,23 +4,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var apiUsersRouter = require('./routes/api/users');
 
 var app = express();
-var mongoose = require('mongoose');
-
-
-var config = {};
-config.mongodb = 'mongodb://localhost/mean-cms';
-module.exports = config;
-
-var config = require('./config.dev');
-
-//Test the file
-console.log(config);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -30,7 +17,6 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use('/api/users', apiUsersRouter);
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
@@ -53,6 +39,3 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
-
-//Connect to MongoDB
-mongoose.connect(config.mongodb, { useNewUrlParser: true });
