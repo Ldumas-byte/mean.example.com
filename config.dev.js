@@ -1,8 +1,6 @@
+
 var config = {};
 config.mongodb = 'mongodb://localhost/mean-cms';
-module.exports = config;
-
-var config = require('./config.dev');
 
 //Session configuration object
 config.session = {};
@@ -18,4 +16,5 @@ config.session.secret = '7j&1tH!cr4F*1U';
 //Define the domain for which this cookie is to be set
 config.cookie.domain = 'localhost';
 
-console.log(config);
+module.exports = config;
+
