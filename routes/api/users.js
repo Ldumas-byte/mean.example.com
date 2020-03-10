@@ -1,34 +1,34 @@
 var express = require('express');
 var router = express.Router();
+
+router.get('/', function(req, res, next) {
+  res.json({success: true});
+});
+
+var express = require('express');
+var router = express.Router();
 var Users = require('../../models/users');
 
 router.get('/', function(req, res, next) {
-
   Users.find({},function(err, users){
     if(err){
      return res.json({'success':false, 'error': err});
-    }
-
+   }
     return res.json({'success':true, 'users': users});
   });
-
 });
 
 router.get('/:userId', function(req,res){
   
   var userId = req.params.userId;
-
-  Users.findOne({'_id':userId}, function(err, user){
-    if(err){
+   Users.findOne({'_id':userId}, function(err, user){
+     if(err){
       return res.json({'success':false, 'error': err});
     }
-
-    return res.json({'success':true, 'user': user});
-  });
-
-});
-
-router.post('/', function(req, res) {
+     return res.json({'success':true, 'user': user});
+   });
+ });
+ router.post('/', function(req, res) {
   Users.create(new Users({
     username: req.body.username,
     email: req.body.email,
@@ -44,7 +44,6 @@ router.post('/', function(req, res) {
     
   });
 });
-
 router.put('/', function(req, res){
 
   Users.findOne({'_id': req.body._id}, function(err, user){
@@ -84,9 +83,8 @@ router.put('/', function(req, res){
    }
 
   });
-
+  
 });
-
 router.delete('/:userId', function(req,res){
 
   var userId = req.params.userId;
@@ -102,6 +100,4 @@ router.delete('/:userId', function(req,res){
   });
 
 });
-
-
 module.exports = router;
