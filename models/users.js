@@ -3,6 +3,7 @@ var Schema = mongoose.Schema;
 var uniqueValidator = require('mongoose-unique-validator');
 var passportLocalMongoose = require('passport-local-mongoose'); 
 
+//Create a schema
 var Users = new Schema({
   email: {
     type: String,
@@ -19,7 +20,7 @@ var Users = new Schema({
   admin: {
     type: Boolean,
     default: false
-  } ,
+  },
   created: {
     type: Date,
     default: Date.now
@@ -31,7 +32,7 @@ var Users = new Schema({
   hash: {
     type: String,
     required: [
-      true,   
+      true, 
       'There was a problem creating your password'
     ]
   },
@@ -49,8 +50,7 @@ Users.pre('save', function(next){
   next();
 });
 
-
+//Add unique validation properties to the model
 Users.plugin(uniqueValidator);
-
 Users.plugin(passportLocalMongoose);
 module.exports  = mongoose.model('Users', Users);
