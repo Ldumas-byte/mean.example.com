@@ -1,11 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-
-router.get('/', function(req, res, next) {
-  res.render('index', { title:'Express', name:'Lamarr'});
-});
-
+/* GET home page. */
 router.get('/', function(req, res, next) {
   console.log(req.session);
   res.render('index', { title: 'Express' });

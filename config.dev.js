@@ -1,7 +1,5 @@
-
 var config = {};
 config.mongodb = 'mongodb://localhost/mean-cms';
-
 //Session configuration object
 config.session = {};
 
@@ -17,4 +15,3 @@ config.session.secret = '7j&1tH!cr4F*1U';
 config.cookie.domain = 'localhost';
 
 module.exports = config;
-
